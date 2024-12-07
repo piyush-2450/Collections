@@ -1,0 +1,28 @@
+# Included and excluded paths
+included:
+  - Sources
+  - Tests
+excluded:
+  - .build
+  - GeneratedFiles
+
+# Opt-in rules (optional)
+opt_in_rules:
+  - all
+
+# Disabled rules
+disabled_rules:
+#  - force_cast
+#  - force_try
+   - file_header
+   - contrasted_opening_brace
+   - missing_docs
+   - type_contents_order
+   - explicit_acl
+   - strict_fileprivate
+   - redundant_type_annotation
+   - inert_defer
+   - unused_capture_list
+
+# Reporter style
+reporter: xcode

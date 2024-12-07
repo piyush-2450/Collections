@@ -13,6 +13,10 @@ public final class LinkedList<T> {
 
 	var indexNodeMap: [Index: WeakRef<Node>] = [:]
 
+	deinit {
+		//
+	}
+
 	// MARK: + Public scope
 
 	public typealias Index = UInt
@@ -22,6 +26,10 @@ public final class LinkedList<T> {
 
 		var next: Node?
 		weak var previous: Node?
+
+		deinit {
+			//
+		}
 
 		// MARK: ++ Public scope
 
@@ -47,8 +55,8 @@ public final class LinkedList<T> {
 			count += 1
 		}
 
-		let newNode = Node(value)
-		let newIndex = count + 1
+		let newNode: Node = Node(value)
+		let newIndex: Index = count + 1
 
 		indexNodeMap[newIndex] = .init(newNode)
 
@@ -68,16 +76,16 @@ public final class LinkedList<T> {
 			count -= 1
 		}
 
-		let prev = node.previous
-		let next = node.next
+		let prev: Node? = node.previous
+		let next: Node? = node.next
 
-		if let prev = prev {
+		if let prev {
 			prev.next = next
 		} else {
 			head = next
 		}
 
-		if let next = next {
+		if let next {
 			next.previous = prev
 		} else {
 			tail = prev
@@ -93,7 +101,7 @@ public final class LinkedList<T> {
 	}
 
 	public func forEach(_ body: (T) -> Void) {
-		var currentNode = head
+		var currentNode: Node? = head
 		while let node = currentNode {
 			body(node.value)
 			currentNode = node.next
@@ -101,8 +109,6 @@ public final class LinkedList<T> {
 	}
 
 	public subscript(index: Index) -> Node? {
-		get {
-			indexNodeMap[index]?.value
-		}
+		indexNodeMap[index]?.value
 	}
 }

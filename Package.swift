@@ -9,20 +9,41 @@ let package = Package(
 		.iOS(.v12),
 		.macOS(.v12)
 	],
-    products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(
-            name: "Collections",
-            targets: ["Collections"]),
-    ],
-    targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "Collections"),
-        .testTarget(
-            name: "CollectionsTests",
-            dependencies: ["Collections"]
-        ),
-    ]
+	products: [
+		// Products define the executables and libraries a package produces, making them visible to other packages.
+		.library(
+			name: "Collections",
+			targets: ["Collections"]
+		),
+	],
+	dependencies: [
+		.package(
+			url: "https://github.com/realm/SwiftLint.git",
+			branch: "main"
+		)
+	],
+	targets: [
+		// Targets are the basic building blocks of a package, defining a module or a test suite.
+		// Targets can depend on other targets in this package and products from dependencies.
+		.target(
+			name: "Collections",
+			dependencies: [],
+			plugins: [
+				.plugin(
+					name: "SwiftLintBuildToolPlugin",
+					package: "swiftlint"
+				)
+			]
+		),
+		.testTarget(
+			name: "CollectionsTests",
+			dependencies: ["Collections"],
+			plugins: [
+				.plugin(
+					name: "SwiftLintBuildToolPlugin",
+					package: "swiftlint"
+				)
+			]
+		),
+	]
 )

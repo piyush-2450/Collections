@@ -9,6 +9,12 @@
 import Foundation
 
 public final class WeakRef<T: AnyObject> {
+	// MARK: + Internal scope
+
+	deinit {
+		//
+	}
+
 	// MARK: + Public scope
 
 	public weak var value: T?
