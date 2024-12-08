@@ -50,7 +50,7 @@ open class List<T> {
 		self.columns = columns
 	}
 
-	public subscript(
+	open subscript(
 		row: Index,
 		column: Index
 	) -> T? {
@@ -72,7 +72,7 @@ open class List<T> {
 		}
 	}
 
-	public func forEach(_ body: (Index, Index, T?) -> Void) {
+	open func forEach(_ body: (Index, Index, T?) -> Void) {
 		for index in nodes.keys.sorted() {
 			let listIndex: ListIndex = listIndex(index)
 			body(
