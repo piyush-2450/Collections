@@ -8,7 +8,7 @@
 
 import Foundation
 
-public final class List<T> {
+open class List<T> {
 	// MARK: Internal scope
 
 	var nodes: [Index: T] = [:]
