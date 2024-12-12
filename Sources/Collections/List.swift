@@ -52,6 +52,10 @@ open class List<T> {
 		)
 	}
 
+	public func linearToListIndex(_ index: Index) -> ListIndex {
+		listIndex(index)
+	}
+
 	public init(
 		rows: Index,
 		columns: Index
