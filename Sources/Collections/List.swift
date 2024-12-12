@@ -42,6 +42,16 @@ open class List<T> {
 	public let rows: Index
 	public let columns: Index
 
+	public func linearIndex(
+		row: Index,
+		column: Index
+	) -> Index {
+		index(
+			row: row,
+			column: column
+		)
+	}
+
 	public init(
 		rows: Index,
 		columns: Index
