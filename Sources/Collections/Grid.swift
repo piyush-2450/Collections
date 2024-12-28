@@ -71,12 +71,22 @@ open class Grid<T> {
 		self.dimensions = dimensions
 	}
 
-	open subscript(indices: LinearIndex...) -> T? {
+	open subscript(indices: [LinearIndex]) -> T? {
 		get {
 			nodes[linearIndex(indices)]
 		}
 		set {
 			nodes[linearIndex(indices)] = newValue
+		}
+	}
+
+	@inlinable
+	open subscript(indices: LinearIndex...) -> T? {
+		get {
+			self[indices]
+		}
+		set {
+			self[indices] = newValue
 		}
 	}
 
