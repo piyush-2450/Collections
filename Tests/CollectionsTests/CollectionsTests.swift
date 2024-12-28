@@ -5,18 +5,15 @@ import Testing
 // swiftlint:disable no_magic_numbers
 @Test
 internal func test0001() async throws {
-	let list: List<String> = .init(
-		rows: 20,
-		columns: 30
-	)
+	let grid: Grid<String> = .init(20, 30)
 
-	list[15, 16] = "15_16"
+	grid[15, 16] = "15_16"
 
-	#expect(list[15, 16] == "15_16")
-	#expect(list[16, 15] == nil)
+	#expect(grid[15, 16] == "15_16")
+	#expect(grid[16, 15] == nil)
 
 	var items: [String] = []
-	list.forEach { _, _, item in
+	grid.forEach { _, item in
 		if let item {
 			items.append(item)
 		}
